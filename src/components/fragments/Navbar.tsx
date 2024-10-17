@@ -8,8 +8,12 @@ import {
 } from "../ui/dropdown-menu";
 import { UseTheme } from "@/common/themeProvider";
 import { ChevronDown, Moon, Sun } from "lucide-react";
+import { useAtom } from "jotai";
+import { formLogin } from "@/jotai/atom";
+import Login from "./Login";
 
 const Navbar = () => {
+  const [login, setLogin] = useAtom(formLogin);
   const { setTheme } = UseTheme();
 
   const theme = localStorage.getItem("vite-ui-theme");
@@ -56,7 +60,11 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="flex justify-between items-center gap-5">
-            <Button variant={"ghost"} size={"lg"}>
+            <Button
+              variant={"ghost"}
+              size={"lg"}
+              onClick={() => setLogin(true)}
+            >
               Log in
             </Button>
             <Button variant={"default"} size={"lg"}>
@@ -74,6 +82,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      {login && <Login />}
     </nav>
   );
 };
