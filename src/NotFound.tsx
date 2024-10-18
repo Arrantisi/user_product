@@ -1,6 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "./components/ui/button";
 
 const NotFound = () => {
+  const navigate = useNavigate();
+
+  const handleButton = () => {
+    navigate("/");
+  };
+
   return (
     <section className="bg-background w-full h-screen flex justify-center items-center">
       <div className="flex flex-col">
@@ -15,7 +22,7 @@ const NotFound = () => {
             Sorry, we can't find that page. You'll find lots to explore on the
             home page.{" "}
           </p>
-          <Button>Back to Homepage</Button>
+          <Button onClick={handleButton}>Back to Homepage</Button>
         </div>
       </div>
     </section>

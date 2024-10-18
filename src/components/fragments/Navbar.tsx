@@ -9,11 +9,13 @@ import {
 import { UseTheme } from "@/common/themeProvider";
 import { ChevronDown, Moon, Sun } from "lucide-react";
 import { useAtom } from "jotai";
-import { formLogin } from "@/jotai/atom";
+import { formLogin, formRegister } from "@/jotai/atom";
 import Login from "./Login";
+import Register from "./Register";
 
 const Navbar = () => {
   const [login, setLogin] = useAtom(formLogin);
+  const [register, setRegister] = useAtom(formRegister);
   const { setTheme } = UseTheme();
 
   const theme = localStorage.getItem("vite-ui-theme");
@@ -39,7 +41,7 @@ const Navbar = () => {
                     variant={"ghost"}
                     className="flex justify-between items-center px-3"
                   >
-                    <h4 className="pr-3">ways to sell </h4>
+                    <p className="pr-3">ways to sell </p>
                     <ChevronDown size={15} />
                   </Button>
                 </DropdownMenuTrigger>
@@ -67,7 +69,7 @@ const Navbar = () => {
             >
               Log in
             </Button>
-            <Button variant={"default"} size={"lg"}>
+            <Button variant={"default"} size={"lg"} onClick={() => setRegister(true)}>
               Sign up for free
             </Button>
             <Button
@@ -83,6 +85,7 @@ const Navbar = () => {
         </div>
       </div>
       {login && <Login />}
+      {register && <Register/>}
     </nav>
   );
 };

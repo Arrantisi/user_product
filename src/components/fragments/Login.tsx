@@ -8,7 +8,14 @@ import {
 } from "../ui/card";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
@@ -76,6 +83,7 @@ const Login = () => {
                     <FormControl>
                       <Input placeholder="arran" {...field} />
                     </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -93,6 +101,7 @@ const Login = () => {
                         className="w-full"
                       />
                     </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
